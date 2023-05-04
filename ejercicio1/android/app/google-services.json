@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "94394114431",
+    "project_id": "autenticacionmovil-aac49",
+    "storage_bucket": "autenticacionmovil-aac49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94394114431:android:9d9edcdc25f523c639fa4a",
+        "android_client_info": {
+          "package_name": "com.example.ejercicio1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94394114431-5aa1vd2hiojkqsare0otb83tk9ck59va.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ejercicio1",
+            "certificate_hash": "0016f3849b463d0b98312e84b1decf45d7c14998"
+          }
+        },
+        {
+          "client_id": "94394114431-n44fahnded376bcro72r7hfb9du0fg3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXMOkVtJbL0IA42t3swO-tHOR15LEuYt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94394114431-mhlf8nni9ucqaiebmfbgt8fskra22h2o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

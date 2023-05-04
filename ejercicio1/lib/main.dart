@@ -1,3 +1,5 @@
+import 'package:ejercicio1/services/firebase_service.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
@@ -35,45 +37,54 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         title: Text('Iniciar sesión'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => paginaInicio()),
-                );
-              },
-              child: Text('Iniciar sesión con Google'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => paginaInicio()),
-                );
-              },
-              child: Text('Iniciar sesión con Facebook'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => paginaInicio()),
-                );
-              },
-              child: Text('Iniciar sesión con Twitter'),
-            ),
-          ],
+        child: FutureBuilder(
+          future: FirebaseService.firebaseInit(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => paginaInicio()),
+                      );
+                    },
+                    child: Text('Iniciar sesión con Google'),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => paginaInicio()),
+                      );
+                    },
+                    child: Text('Iniciar sesión con Facebook'),
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => paginaInicio()),
+                      );
+                    },
+                    child: Text('Iniciar sesión con Twitter'),
+                  ),
+                ],
+                
+              );
+            } else {
+              return const CircularProgressIndicator();
+            }
+          },
         ),
       ),
     );
