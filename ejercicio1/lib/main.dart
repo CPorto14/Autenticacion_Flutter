@@ -1,6 +1,7 @@
 import 'package:ejercicio1/services/firebase_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -56,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialPageRoute(builder: (context) => paginaInicio()),
                       );
                     },
-                    child: Text('Iniciar sesión con Google'),
+                    child: const Text('Iniciar sesión con Google'),
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
@@ -69,15 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text('Iniciar sesión con Facebook'),
                   ),
                   SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => paginaInicio()),
-                      );
-                    },
-                    child: Text('Iniciar sesión con Twitter'),
-                  ),
+                  newMethod(context),
                 ],
                 
               );
@@ -88,6 +81,23 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  ElevatedButton newMethod(BuildContext context) {
+    return ElevatedButton(
+                  onPressed: () async {
+                    User? user = await FirebaseService.signInWithGitHub();
+                    print(user);
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                        builder: (context) => paginaInicio()
+                        ),
+                        ModalRoute.withName(''),
+                      );                        
+                    }
+                  },
+                  child:  const Text('Iniciar sesión con GitHUb'),
+                );
   }
 }
 
