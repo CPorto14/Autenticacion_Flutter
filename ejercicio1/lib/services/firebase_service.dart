@@ -12,7 +12,7 @@ class FirebaseService {
     }
   }
 
-  Future<User?> signInWithGitHub() async {
+  static Future<User?> signInWithGitHub() async {
     try {
       GithubAuthProvider githubProvider = GithubAuthProvider();
       UserCredential userCredential =
